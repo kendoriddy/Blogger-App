@@ -18,12 +18,12 @@ describe Post, type: :model do
 
   it 'title should be a maximum of 250 characters' do
     @post.title =
-      'Andor takes Star Wars in a completely new direction than we’ve ever seen before.
+      "Andor takes Star Wars in a completely new direction than we’ve ever seen before.
     Cassian’s origin story opens not with talk of Jedi and Sith, or a civil war between the Empire and the Rebellion,
     but with a common crook who’s down on his luck and desperate. The opening minutes that play like a neo-noir
     crime thriller straight out of Blade Runner soon give way to a very grounded story about the folks you don’t
     normally see in a Star Wars movie, including the blue collar workers who keep the wheels turning on the Empire’s
-    corporate interests.'
+    corporate interests."
 
     expect(@post).to_not be_valid
   end
@@ -38,12 +38,12 @@ describe Post, type: :model do
     expect(@post).to be_valid
   end
 
-  it 'has it\'s comments_counter greater then or equal to 0' do
+  it "has its comments_counter greater then or equal to 0" do
     @post.comments_counter = -10
     expect(@post).to_not be_valid
   end
 
-  it 'has it\'s likes_counter greater than or equal to 0' do
+  it "has its likes_counter greater than or equal to 0" do
     @post.likes_counter = -10
     expect(@post).to_not be_valid
   end
