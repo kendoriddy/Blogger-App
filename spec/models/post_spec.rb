@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Post, type: :model do
   before :each do
-    @author = User.new(name: 'Andor', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Rebel fighter from Kenari')
-    @post = Post.new(author: @author, title: 'Post numero uno', text: 'This is a test post', comments_counter: 0)
+    @author = User.new(name: 'Musa', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Software dev from Nigeria')
+    @post = Post.new(author: @author, title: 'My first post', text: 'This is my very first post on this app', comments_counter: 0)
   end
 
   it 'title should be present' do
@@ -16,29 +16,24 @@ describe Post, type: :model do
     expect(@post).to_not be_valid
   end
 
-  it 'title should be a maximum of 250 characters' do
+  it 'title should have a maximum of 250 characters' do
     @post.title =
-      "Andor takes Star Wars in a completely new direction than we’ve ever seen before.
-    Cassian’s origin story opens not with talk of Jedi and Sith, or a civil war between the Empire and the Rebellion,
-    but with a common crook who’s down on his luck and desperate. The opening minutes that play like a neo-noir
-    crime thriller straight out of Blade Runner soon give way to a very grounded story about the folks you don’t
-    normally see in a Star Wars movie, including the blue collar workers who keep the wheels turning on the Empire’s
-    corporate interests."
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
 
     expect(@post).to_not be_valid
   end
 
-  it 'has it\'s comments_counter set to 0 by default' do
+  it "comments_counter should be set to 0 by default" do
     expect(@post.comments_counter).to eq 0
     expect(@post).to be_valid
   end
 
-  it 'has it\'s likes_counter set to 0 by default' do
+  it "likes_counter should be set to 0 by default" do
     expect(@post.likes_counter).to eq 0
     expect(@post).to be_valid
   end
 
-  it "has its comments_counter greater then or equal to 0" do
+  it "comments_counter should be greater then or equal to 0" do
     @post.comments_counter = -10
     expect(@post).to_not be_valid
   end
@@ -48,15 +43,15 @@ describe Post, type: :model do
     expect(@post).to_not be_valid
   end
 
-  it 'has the recent 5 comments after it creates 10 comments' do
-    10.times { |time| Comment.create(author: @author, post: @post, text: "Test comment numero #{time + 1}") }
+  it "has the recent 5 comments after it creates 10 comments" do
+    10.times { |time| Comment.create(author: @author, post: @post, text: "Test comment #{time + 1}") }
     expect(@post.recent_five.length).to eq 5
 
     recent_comment_text = @post.recent_five.first.text
-    expect(recent_comment_text).to match 'Test comment numero 10'
+    expect(recent_comment_text).to match 'Test comment 10'
   end
 
-  it 'can not update posts_counter since it\'s a private method' do
+  it "can not update posts_counter since it's a private method" do
     expect(@post).to_not respond_to(:update_posts_counter)
   end
 end

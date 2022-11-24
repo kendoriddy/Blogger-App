@@ -8,11 +8,11 @@ describe Like, type: :model do
     @like = Like.create(author: @author, post: @post)
   end
 
-  it 'can not update likes_counter since it\'s a private method' do
+  it "can not update likes_counter since it's a private method" do
     expect(@like).to_not respond_to(:update_likes_counter)
   end
 
-  it 'will have the Post\'s likes_counter through update_comments_counter ' do
+  it "will have the Post's likes_counter through update_comments_counter " do
     expect(@post.likes_counter).to eq 1
   end
 end
