@@ -43,7 +43,7 @@ describe Post, type: :model do
     expect(@post).to_not be_valid
   end
 
-  it 'has it\'s likes_counter greater then or equal to 0' do
+  it 'has it\'s likes_counter greater than or equal to 0' do
     @post.likes_counter = -10
     expect(@post).to_not be_valid
   end
