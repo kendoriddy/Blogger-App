@@ -1,0 +1,19 @@
+
+  <p>
+  <%= post.title %>
+</p>
+
+<p>
+<%= post.text %>
+</p>
+
+<span>Likes : <%= post.likes_counter %></span>
+  <span>Comments : <%= post.comments_counter %></span>
+
+<ul>
+  <% post.recent_five.each do |comment| %>
+  <li> <%= comment.text %></li>
+ <% end %>
+  </ul>
+
+<a href="/users/<%= @user.id %>/posts/<%= post.id %>"> See more</a>
