@@ -12,7 +12,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  user: postgres
+  user: techteam1
+  host: localhost
+  password: ''
   # timeout: 5000
 
 development:
