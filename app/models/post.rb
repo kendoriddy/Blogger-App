@@ -16,6 +16,10 @@ class Post < ApplicationRecord
   private
 
   def update_posts_counter
-    author.update(posts_counter: author.posts.all.length)
+    author.increment!(:posts_counter)
+  end
+
+  def update_likes_counter
+    post.increment!(:likes_counter)
   end
 end
