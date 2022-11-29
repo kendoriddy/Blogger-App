@@ -1,1 +1,7 @@
-<h1>This is the app home page</h1>
+<h1>List of all users</h1>
+
+<div>
+<% @users.each do |user|%>
+  <div> <%= render 'user', user: user %></div> 
+<% end %> <br>
+</ul>
