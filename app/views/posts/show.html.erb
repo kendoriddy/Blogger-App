@@ -5,9 +5,15 @@
     <p> <%= @post.text%> </p>
     <p > Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %> </p>
   </div>
-  <div > 
+  <div >
     <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
   <%= f.submit "Like" %>
   <% end %>
   </div>
 </div>
+<%
+=begin%>
+ 
+<%= link_to 'Add comment', new_user_post_comment_path(@user, @post) %> 
+<%
+=end%>
