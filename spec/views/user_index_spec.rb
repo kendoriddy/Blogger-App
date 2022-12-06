@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'users_index', type: :feature do
   before :each do
-    User.create(name: 'John Doe', photo:'http//p.png', bio: 'Lorem ipsum dolor sit', posts_counter: 0)
-    User.create(name: 'Mary Williams', photo:'http//p1.png', bio: 'Lorem ipsum dolor', posts_counter: 0)
+    User.create(name: 'John Doe', photo: 'http//p.png', bio: 'Lorem ipsum dolor sit', posts_counter: 0)
+    User.create(name: 'Mary Williams', photo: 'http//p1.png', bio: 'Lorem ipsum dolor', posts_counter: 0)
   end
 
   it 'displays page header' do
@@ -28,10 +28,8 @@ RSpec.describe 'users_index', type: :feature do
     expect(page).to have_content('Number of Posts: 0')
   end
 
-
   it 'it redirect to user show page' do
     visit users_path
     expect(page).to have_link 'More info', href: user_path(User.first)
   end
-
 end
