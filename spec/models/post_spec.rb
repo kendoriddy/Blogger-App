@@ -53,9 +53,9 @@ describe Post, type: :model do
 
   it 'has the recent 5 comments after it creates 10 comments' do
     10.times { |time| Comment.create(author: @author, post: @post, text: "Test comment #{time + 1}") }
-    expect(@post.recent_five.length).to eq 5
+    expect(@post.fetch_recent_comments.length).to eq 5
 
-    recent_comment_text = @post.recent_five.first.text
+    recent_comment_text = @post.fetch_recent_comments.first.text
     expect(recent_comment_text).to match 'Test comment 10'
   end
 

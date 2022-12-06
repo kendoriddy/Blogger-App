@@ -5,9 +5,11 @@
 <hr />
 
 <% @posts.each_with_index do |post, index| %>
+<%= link_to post.title, user_post_path(@user, post) %>
 <p>Post #<%= index+1 %></p>
 <section>
-  <ul><%= render 'post', post: post %></ul>
+  <ul><%= render 'posts/post', post: post %></ul>
 
 </section>
 <% end %>
+<%= will_paginate @posts, :container => false %>
