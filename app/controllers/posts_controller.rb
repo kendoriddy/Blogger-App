@@ -1,33 +1,40 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
+    @posts = @user.posts
   end
 
   def new
-    newpost = Post.new
-    respond_to do |format|
-      format.html { render :new, locals: { newpost: } }
-    end
+    @post = Post.new
   end
 
   def create
+    @user = User.find(params[:user_id])
     @post = current_user.posts.new(post_params)
-    @post.likes_counter = 0
     @post.comments_counter = 0
+    @post.likes_counter = 0
 
-    respond_to do |format|
-      format.html do
-        if @post.save
-          flash[:success] = 'Post saved successfully'
-          redirect_to user_post_path(current_user, @post.id)
-        else
-          newpost = Post.new
-          flash.now[:error] = 'Error: post could not be saved'
-          render :new, locals: { newpost: }
-        end
-      end
+    if @post.save
+      flash[:notice] = 'Post created successfully'
+      redirect_to user_post_url(@user, @post)
+    else
+      render 'new', status: :unprocessable_entity
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:author_id])
   end
 
   def post_params
