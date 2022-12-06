@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def fetch_recent_comments
-    comments.includes([:author]).last(5)
+    comments.last(5)
   end
 
   # private
