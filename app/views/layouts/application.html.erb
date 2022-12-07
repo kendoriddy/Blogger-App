@@ -11,17 +11,24 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render 'partial/alerts' %>
   <% flash.each do |name, msg|%>
     <ul>
     <li><%= msg %></li>
     </ul>
   <% end %>
-  <% if user_signed_in? %>
+  <%
+=begin%>
+ <% if user_signed_in? %> 
+<%
+=end%>
     <%= yield %>
-    <% else %>
+    <%
+=begin%>
+ <% else %>
     <a href="/users/sign_in">Sign in</a>
-    <% end %>
+    <% end %> 
+<%
+=end%>
   </body>
 </html>

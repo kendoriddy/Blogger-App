@@ -10,7 +10,7 @@
 
 <hr>
 
-<% @user.recent_three.each_with_index do |post, index|%>
+<% @user.return_recent_posts.each_with_index do |post, index|%>
 <p>Post #<%= index+1 %></p>
 <p>
   <%= post.text%>
