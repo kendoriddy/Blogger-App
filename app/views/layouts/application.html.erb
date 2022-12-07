@@ -11,7 +11,15 @@
   </head>
 
   <body>
+  
+   <%# Authentication with devise %>
+
   <%= render 'partial/alerts' %>
+  <% if current_user %>
+  <%= current_user.name %>
+  <%= button_to 'Log out', destroy_user_session_path, method: :delete , data: { turbo: false } %>
+  <% end %>
+  
   <% flash.each do |name, msg|%>
     <ul>
     <li><%= msg %></li>
