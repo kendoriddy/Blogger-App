@@ -19,24 +19,14 @@
   <%= current_user.name %>
   <%= button_to 'Log out', destroy_user_session_path, method: :delete , data: { turbo: false } %>
   <% end %>
-  
+
   <% flash.each do |name, msg|%>
     <ul>
     <li><%= msg %></li>
     </ul>
   <% end %>
-  <%
-=begin%>
- <% if user_signed_in? %> 
-<%
-=end%>
+
     <%= yield %>
-    <%
-=begin%>
- <% else %>
-    <a href="/users/sign_in">Sign in</a>
-    <% end %> 
-<%
-=end%>
+
   </body>
 </html>
