@@ -65,6 +65,7 @@ group :development do
   gem 'bullet'
   gem 'database_cleaner'
   gem 'web-console'
+  gem 'letter_opener'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -79,3 +80,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+
+# Use devise for authentication
+gem 'devise'
