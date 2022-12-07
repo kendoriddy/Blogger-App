@@ -6,16 +6,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%
+=begin%>
+ <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> 
+<%
+=end%>
+
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true%>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%
+=begin%>
+ <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> 
+<%
+=end%>
   </head>
 
   <body>
-  <% flash.each do |name, msg|%>
-    <ul>
-    <li><%= msg %></li>
-    </ul>
+  
+   <%# Authentication with devise %>
+
+  <%= render 'partial/alerts' %>
+
+<div class='container'>
+<div class='row'>
+ <%= yield %>
+</div>
+<% if current_user %>
+  <%= current_user.name %>
+  <%= button_to 'Log out', destroy_user_session_path, method: :delete , data: { turbo: false } %>
   <% end %>
-    <%= yield %>
+</div>
+
+
   </body>
 </html>

@@ -64,6 +64,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'bullet'
   gem 'database_cleaner'
+  gem 'letter_opener'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -79,3 +80,11 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+# Use devise for authentication
+gem 'devise'
+
+# Bootstrap
+gem 'cssbundling-rails', '~> 1.1'
+
+gem 'jsbundling-rails', '~> 1.0'
