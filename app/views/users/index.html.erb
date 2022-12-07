@@ -11,7 +11,7 @@
             <img src=<%= user.photo %> alt="profile picture of <%= user.name %>" />
             <b>Name: </b><%=user.name%> 
           </div>
-        <small>Numner of posts: </b><%=user.posts_counter || 0 %></b> </small>
+        <small>Number of posts: </b><%=user.posts_counter || 0 %></b> </small>
         </div>
         <div class="">
           <%= link_to 'show user', user_path(user), class: 'btn-sm btn btn-primary' %>
