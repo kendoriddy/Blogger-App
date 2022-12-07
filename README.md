@@ -71,6 +71,8 @@
 
 - **[Create and run necessary migration files]**
 - **[Match table and column names to the ERD diagram.]**
+- **[Creating Models, processing models and validating models.]**
+- **[Integration .]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
