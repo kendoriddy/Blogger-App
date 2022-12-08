@@ -91,3 +91,6 @@ gem 'jsbundling-rails', '~> 1.0'
 
 # Cancancan
 gem 'cancancan'
+
+# Install will_paginate
+gem 'will_paginate', '~> 3.3'
